@@ -11,6 +11,7 @@ interface Day {
 interface ContributionsData {
   generatedAt: string;
   usernames: string[];
+  yearsBack: number;
   days: Day[];
 }
 
@@ -35,11 +36,28 @@ function buildColumns(days: Day[]): (Day | null)[][] {
   return columns;
 }
 
+function yearLabels(columns: (Day | null)[][]): { colIndex: number; year: string }[] {
+  const labels: { colIndex: number; year: string }[] = [];
+  let lastYear = "";
+  columns.forEach((column, i) => {
+    const firstDay = column.find((d) => d !== null);
+    if (!firstDay) return;
+    const year = firstDay.date.slice(0, 4);
+    if (year !== lastYear) {
+      labels.push({ colIndex: i, year });
+      lastYear = year;
+    }
+  });
+  return labels;
+}
+
 function tooltip(day: Day, usernames: string[]): string {
   const breakdown = usernames.map((u) => `${day.byUser[u] ?? 0} ${u}`).join(", ");
   const noun = day.total === 1 ? "commit" : "commits";
   return `${day.date}: ${day.total} ${noun} (${breakdown})`;
 }
+
+const COL_WIDTH = 14; // 11px cell + 3px gap
 
 export default function Activity() {
   const [data, setData] = useState<ContributionsData | null>(null);
@@ -55,16 +73,25 @@ export default function Activity() {
   if (failed || !data) return null;
 
   const columns = buildColumns(data.days);
+  const labels = yearLabels(columns);
 
   return (
     <section className="section activity" aria-labelledby="activity-title">
       <div className="container">
         <SectionHeading eyebrow="Commit log" title="Activity" id="activity" />
         <p className="activity__note">
-          Combined from both GitHub accounts — {data.usernames.join(" + ")} — over the last year.
+          Combined from both GitHub accounts — {data.usernames.join(" + ")} — over the last{" "}
+          {data.yearsBack} years.
         </p>
 
         <div className="activity__scroll">
+          <div className="activity__years" style={{ width: columns.length * COL_WIDTH }}>
+            {labels.map((l) => (
+              <span key={l.year} className="activity__year" style={{ left: l.colIndex * COL_WIDTH }}>
+                {l.year}
+              </span>
+            ))}
+          </div>
           <div className="activity__grid">
             {columns.map((column, i) => (
               <div className="activity__col" key={i}>

@@ -29,6 +29,7 @@ jobs:
       - run: node scripts/fetch-contributions.mjs
         env:
           CONTRIB_READ_TOKEN: ${{ secrets.CONTRIB_READ_TOKEN }}
+          CONTRIB_READ_TOKEN_2: ${{ secrets.CONTRIB_READ_TOKEN_2 }}
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

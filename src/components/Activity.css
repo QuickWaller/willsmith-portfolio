@@ -9,6 +9,19 @@
   padding-bottom: 0.25rem;
 }
 
+.activity__years {
+  position: relative;
+  height: 1.1rem;
+}
+
+.activity__year {
+  position: absolute;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--wire);
+}
+
 .activity__grid {
   display: inline-grid;
   grid-auto-flow: column;
