@@ -1,0 +1,23 @@
+.section-heading {
+  scroll-margin-top: var(--nav-h);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.section-heading__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.6rem;
+}
+
+.section-heading__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  flex-shrink: 0;
+}
+
+.section-heading__title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}

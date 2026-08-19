@@ -1,0 +1,50 @@
+.education__body {
+  max-width: 42rem;
+}
+
+.education__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.education__degree {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.education__dates {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--wire);
+  white-space: nowrap;
+}
+
+.education__body ul {
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.education__body li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+  color: var(--wire);
+}
+
+.education__body li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--signal);
+}
