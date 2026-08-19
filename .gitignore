@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 scratch-*
+public/contributions.json
 
 # Editor directories and files
 .vscode/*
