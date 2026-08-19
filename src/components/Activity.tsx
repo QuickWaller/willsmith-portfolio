@@ -11,8 +11,14 @@ interface Day {
 interface ContributionsData {
   generatedAt: string;
   usernames: string[];
-  yearsBack: number;
+  startDate: string;
   days: Day[];
+}
+
+const MONTH_FORMATTER = new Intl.DateTimeFormat("en-NZ", { month: "long", year: "numeric" });
+
+function monthLabel(iso: string): string {
+  return MONTH_FORMATTER.format(new Date(iso));
 }
 
 function level(count: number): 0 | 1 | 2 | 3 | 4 {
@@ -81,8 +87,7 @@ export default function Activity() {
         <SectionHeading eyebrow="Commit log" title="Activity" id="activity" />
         <p className="activity__note">
           Combined from all {data.usernames.length} GitHub accounts —{" "}
-          {data.usernames.join(" + ")} — over the last{" "}
-          {data.yearsBack} years.
+          {data.usernames.join(" + ")} — since {monthLabel(data.startDate)}.
         </p>
 
         <div className="activity__scroll">

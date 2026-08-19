@@ -1,17 +1,17 @@
-// Fetches GitHub contribution calendars for both accounts (each queried
+// Fetches GitHub contribution calendars for all 3 accounts (each queried
 // with its own token, via `viewer`, so private-contribution counts are
-// included) over the last 4 years, and merges them by date into a single
+// included) from START_DATE to now, and merges them by date into a single
 // JSON file the site reads at runtime.
 //
 // GitHub's contributionCalendar caps each query at a 1-year window, so we
-// query 4 one-year windows per account and stitch them together.
+// chunk the range into <=1-year windows and stitch them together.
 
 const ACCOUNTS = [
   { login: "tombstonesuplex", tokenEnv: "CONTRIB_READ_TOKEN" },
   { login: "TheCrocodileDestroyer", tokenEnv: "CONTRIB_READ_TOKEN_2" },
   { login: "QuickWaller", tokenEnv: "CONTRIB_READ_TOKEN_3" },
 ];
-const YEARS_BACK = 4;
+const START_DATE = "2024-09-01T00:00:00Z";
 const OUT_PATH = new URL("../public/contributions.json", import.meta.url);
 
 const QUERY = `
@@ -32,15 +32,15 @@ const QUERY = `
   }
 `;
 
-function yearWindows(years) {
+function dateWindows(startISO, end) {
   const windows = [];
-  const now = new Date();
-  for (let i = 0; i < years; i++) {
-    const to = new Date(now);
-    to.setUTCFullYear(to.getUTCFullYear() - i);
-    const from = new Date(to);
-    from.setUTCFullYear(from.getUTCFullYear() - 1);
+  let from = new Date(startISO);
+  while (from < end) {
+    let to = new Date(from);
+    to.setUTCFullYear(to.getUTCFullYear() + 1);
+    if (to > end) to = end;
     windows.push({ from: from.toISOString(), to: to.toISOString() });
+    from = to;
   }
   return windows;
 }
@@ -72,7 +72,7 @@ async function fetchAccountCalendar(account) {
   }
 
   const days = {};
-  for (const { from, to } of yearWindows(YEARS_BACK)) {
+  for (const { from, to } of dateWindows(START_DATE, new Date())) {
     const viewer = await queryWindow(token, from, to);
     if (viewer.login.toLowerCase() !== account.login.toLowerCase()) {
       throw new Error(
@@ -109,7 +109,7 @@ const days = [...allDates].sort().map((date) => {
 const output = {
   generatedAt: new Date().toISOString(),
   usernames,
-  yearsBack: YEARS_BACK,
+  startDate: START_DATE,
   days,
 };
 
