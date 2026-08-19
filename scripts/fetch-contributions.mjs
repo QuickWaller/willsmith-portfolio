@@ -7,8 +7,9 @@
 // query 4 one-year windows per account and stitch them together.
 
 const ACCOUNTS = [
-  { login: "QuickWaller", tokenEnv: "CONTRIB_READ_TOKEN" },
-  { login: "tombstonesuplex", tokenEnv: "CONTRIB_READ_TOKEN_2" },
+  { login: "tombstonesuplex", tokenEnv: "CONTRIB_READ_TOKEN" },
+  { login: "TheCrocodileDestroyer", tokenEnv: "CONTRIB_READ_TOKEN_2" },
+  { login: "QuickWaller", tokenEnv: "CONTRIB_READ_TOKEN_3" },
 ];
 const YEARS_BACK = 4;
 const OUT_PATH = new URL("../public/contributions.json", import.meta.url);

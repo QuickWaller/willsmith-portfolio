@@ -80,7 +80,8 @@ export default function Activity() {
       <div className="container">
         <SectionHeading eyebrow="Commit log" title="Activity" id="activity" />
         <p className="activity__note">
-          Combined from both GitHub accounts — {data.usernames.join(" + ")} — over the last{" "}
+          Combined from all {data.usernames.length} GitHub accounts —{" "}
+          {data.usernames.join(" + ")} — over the last{" "}
           {data.yearsBack} years.
         </p>
 
