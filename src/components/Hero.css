@@ -3,44 +3,45 @@
   margin-top: var(--nav-h);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
-  overflow: hidden;
 }
 
 .hero__inner {
-  padding-block: clamp(2rem, 6vh, 4rem);
+  padding-top: clamp(1.25rem, 4vh, 2.25rem);
   max-width: 46rem;
 }
 
 .hero__eyebrow {
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
 }
 
 .hero__headline {
-  font-size: clamp(2.75rem, 7vw, 5rem);
-  line-height: 1.02;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  line-height: 1.05;
   letter-spacing: -0.01em;
 }
 
 .hero__lede {
-  margin-top: 1.75rem;
-  max-width: 38rem;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  line-height: 1.6;
+  margin-top: 1.25rem;
+  max-width: 36rem;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  line-height: 1.55;
   color: var(--wire);
 }
 
 .hero__cta {
   display: flex;
   gap: 1rem;
-  margin-top: 2.5rem;
+  margin-top: 1.75rem;
   flex-wrap: wrap;
 }
 
-.hero__trace {
-  width: min(1100px, 92vw);
+.hero__trace.signal-trace {
+  width: auto;
+  height: clamp(56px, 13vh, 140px);
+  max-width: 90vw;
   margin-inline: auto;
-  padding-bottom: clamp(1.5rem, 5vh, 3rem);
+  padding-bottom: clamp(1rem, 3vh, 1.75rem);
   opacity: 0.9;
 }
