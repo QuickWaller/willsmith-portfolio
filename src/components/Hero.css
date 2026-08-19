@@ -3,7 +3,7 @@
   margin-top: var(--nav-h);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
 }
 
@@ -35,13 +35,4 @@
   gap: 1rem;
   margin-top: 1.75rem;
   flex-wrap: wrap;
-}
-
-.hero__trace.signal-trace {
-  width: auto;
-  height: clamp(56px, 13vh, 140px);
-  max-width: 90vw;
-  margin-inline: auto;
-  padding-bottom: clamp(1rem, 3vh, 1.75rem);
-  opacity: 0.9;
 }

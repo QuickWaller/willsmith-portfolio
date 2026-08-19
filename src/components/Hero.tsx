@@ -1,4 +1,3 @@
-import SignalTrace from "./SignalTrace";
 import "./Hero.css";
 
 export default function Hero() {
@@ -21,7 +20,6 @@ export default function Hero() {
           </a>
         </div>
       </div>
-      <SignalTrace className="hero__trace" />
     </section>
   );
 }
