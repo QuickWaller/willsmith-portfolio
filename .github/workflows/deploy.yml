@@ -31,6 +31,14 @@ jobs:
           CONTRIB_READ_TOKEN: ${{ secrets.CONTRIB_READ_TOKEN }}
           CONTRIB_READ_TOKEN_2: ${{ secrets.CONTRIB_READ_TOKEN_2 }}
           CONTRIB_READ_TOKEN_3: ${{ secrets.CONTRIB_READ_TOKEN_3 }}
+      # Lines-added/removed chart is disabled (SHOW_CODE_CHANGES = false in
+      # Activity.tsx) until CONTRIB_READ_TOKEN*/_2/_3 get repo/Contents:Read
+      # scope — no point spending CI time and API calls on data nothing reads.
+      # - run: node scripts/fetch-code-changes.mjs
+      #   env:
+      #     CONTRIB_READ_TOKEN: ${{ secrets.CONTRIB_READ_TOKEN }}
+      #     CONTRIB_READ_TOKEN_2: ${{ secrets.CONTRIB_READ_TOKEN_2 }}
+      #     CONTRIB_READ_TOKEN_3: ${{ secrets.CONTRIB_READ_TOKEN_3 }}
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
