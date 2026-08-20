@@ -63,8 +63,6 @@ function tooltip(day: Day, usernames: string[]): string {
   return `${day.date}: ${day.total} ${noun} (${breakdown})`;
 }
 
-const COL_WIDTH = 14; // 11px cell + 3px gap
-
 export default function Activity() {
   const [data, setData] = useState<ContributionsData | null>(null);
   const [failed, setFailed] = useState(false);
@@ -90,31 +88,33 @@ export default function Activity() {
           {data.usernames.join(" + ")} — since {monthLabel(data.startDate)}.
         </p>
 
-        <div className="activity__scroll">
-          <div className="activity__years" style={{ width: columns.length * COL_WIDTH }}>
-            {labels.map((l) => (
-              <span key={l.year} className="activity__year" style={{ left: l.colIndex * COL_WIDTH }}>
-                {l.year}
-              </span>
-            ))}
-          </div>
-          <div className="activity__grid">
-            {columns.map((column, i) => (
-              <div className="activity__col" key={i}>
-                {column.map((day, j) =>
-                  day ? (
-                    <div
-                      key={day.date}
-                      className={`activity__cell activity__cell--${level(day.total)}`}
-                      title={tooltip(day, data.usernames)}
-                    />
-                  ) : (
-                    <div className="activity__cell activity__cell--empty" key={j} aria-hidden="true" />
-                  ),
-                )}
-              </div>
-            ))}
-          </div>
+        <div className="activity__years">
+          {labels.map((l) => (
+            <span
+              key={l.year}
+              className="activity__year"
+              style={{ left: `${(l.colIndex / columns.length) * 100}%` }}
+            >
+              {l.year}
+            </span>
+          ))}
+        </div>
+        <div className="activity__grid" style={{ gridTemplateColumns: `repeat(${columns.length}, 1fr)` }}>
+          {columns.map((column, i) => (
+            <div className="activity__col" key={i}>
+              {column.map((day, j) =>
+                day ? (
+                  <div
+                    key={day.date}
+                    className={`activity__cell activity__cell--${level(day.total)}`}
+                    title={tooltip(day, data.usernames)}
+                  />
+                ) : (
+                  <div className="activity__cell activity__cell--empty" key={j} aria-hidden="true" />
+                ),
+              )}
+            </div>
+          ))}
         </div>
 
         <div className="activity__legend">
