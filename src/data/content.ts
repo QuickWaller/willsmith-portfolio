@@ -47,7 +47,7 @@ export const projects: Project[] = [
     title: "Multi-Tenant SaaS Infrastructure",
     status: "CLIENT",
     description:
-      "Own and operate the infrastructure for a live, multi-tenant SaaS product at Novatec — an AI assistant users interact with over chat (Telegram/Slack) plus a self-serve web console. VM provisioning, secrets management, and identity/auth design, plus production operations: diagnosing and fixing live incidents and building the observability layer that keeps it running.",
+      "Own and operate the infrastructure for a live, multi-tenant SaaS product at Novatec — an AI assistant that takes real actions (managing calendars and more, not just chatting) over Telegram/Slack and a self-serve web console. VM provisioning, secrets management, and identity/auth design, plus production operations: diagnosing and fixing live incidents and building the observability layer that keeps it running.",
     stack: ["Docker", "Terraform", "Observability", "Identity/auth"],
     links: [],
     note: "Employer work — Novatec Solutions",
