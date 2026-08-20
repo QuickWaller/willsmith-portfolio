@@ -9,6 +9,7 @@
   border: 1px solid color-mix(in srgb, var(--wire) 35%, transparent);
   border-radius: 6px;
   padding: 1.5rem;
+  min-height: 290px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
