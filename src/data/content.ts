@@ -8,7 +8,7 @@ export const experience = {
     "Built an invoicing automation system integrating Pax8 (cloud billing) and Xero (accounting) via Windmill — fuzzy-matches customers across systems and drafts invoices with LLM-assisted content cleanup.",
     "Built a Python HTTP server exposing Microsoft 365 (mail, calendar, OneDrive, tasks) via per-user OAuth — deployed and in active use.",
     "Own the infrastructure for a live, multi-tenant SaaS product — Docker/Terraform VM provisioning, secrets management, and identity/auth design.",
-    "Operate that infrastructure in production — diagnosing and fixing live incidents, building its observability layer, and running a security-incident response after a leaked key.",
+    "Operate that infrastructure in production — diagnosing and fixing live incidents, building its observability layer (structured audit logging + Prometheus monitoring), and leading incident response to a leaked credential (rotation plus git-history remediation).",
   ],
   infra: [
     "Designed and stood up a self-hosted client-hosting platform (Coolify on on-prem, UPS-backed ESXi VMs), migrating client sites off third-party hosting and eliminating its recurring cost.",
@@ -17,7 +17,7 @@ export const experience = {
   ],
 } as const;
 
-export type ProjectStatus = "LIVE" | "FIRMWARE" | "FORK";
+export type ProjectStatus = "LIVE" | "FIRMWARE" | "FORK" | "CLIENT";
 
 export interface ProjectLink {
   label: string;
@@ -30,14 +30,24 @@ export interface Project {
   description: string;
   stack: string[];
   links: ProjectLink[];
+  note?: string;
 }
 
 export const projects: Project[] = [
   {
+    title: "PromptTech AI Sandbox",
+    status: "CLIENT",
+    description:
+      "Capstone project for an industry client, graded A. Dockerised full-stack app for comparing prompts and parameters across generative AI models. AWS Bedrock and Cognito (plus Google OAuth), deployed on EC2; REST API in Node.js/Express with a React front end.",
+    stack: ["React", "Node.js", "Express", "AWS Bedrock", "AWS Cognito", "Docker"],
+    links: [],
+    note: "Client work — no public repo",
+  },
+  {
     title: "Recipe Web App",
     status: "LIVE",
     description:
-      "Full rewrite of an earlier recipe app: Astro + React islands, Drizzle ORM/Postgres, Docker Compose. Self-hosted on a personal Proxmox home lab (VLAN-segmented, Tailscale-only admin access), deployed via Coolify and Cloudflare Tunnel — the same hosting stack built professionally at Novatec, run independently at home.",
+      "Full rewrite of an earlier recipe app: Astro + React islands, Drizzle ORM/Postgres, Docker Compose, unit/end-to-end/visual-regression tests gated by CI. Self-hosted on a personal Proxmox home lab (VLAN-segmented, Tailscale-only admin access), deployed via Coolify and Cloudflare Tunnel — the same hosting stack built professionally at Novatec, run independently at home.",
     stack: ["Astro", "React", "Drizzle ORM", "PostgreSQL", "Docker", "Proxmox", "Coolify"],
     links: [
       { label: "willscookbook.nz", href: "https://willscookbook.nz" },
@@ -48,13 +58,13 @@ export const projects: Project[] = [
     title: "Hiking Data Logger / Weather Pod",
     status: "FIRMWARE",
     description:
-      "Low-power field logger: GPS, barometric/weather sensing, e-ink display, rule-based and ML forecasting. Production-scale ML pipeline — LightGBM trained on ERA5-Land reanalysis against GPM satellite rainfall, ~31M training rows — deployed to the pod's firmware, evaluated against a climatology baseline rather than treated as a lab demo.",
-    stack: ["C++", "LightGBM", "Python", "GPS", "e-ink", "sensor fusion"],
+      "Low-power field logger: GPS, barometric/weather sensing, e-ink display, rule-based and ML forecasting. Production-scale ML pipeline — LightGBM trained on ERA5-Land reanalysis against GPM satellite rainfall, ~31M training rows, skill-scored against a climatology baseline (Brier/CRPS) rather than treated as a lab demo — deployed to the pod's firmware.",
+    stack: ["C++", "LightGBM", "Python", "GPS", "e-ink", "sensor integration"],
     links: [{ label: "repo", href: "https://github.com/QuickWaller/hiking-weather-pod" }],
   },
   {
     title: "ESP32 FM Synthesiser",
-    status: "LIVE",
+    status: "FIRMWARE",
     description:
       "Real-time FM audio synthesis on ESP32, streamed over Bluetooth A2DP — table-lookup oscillator, ADSR envelope, multi-voice mixing. A separate fixed-point rework builds a from-scratch Q16.16/Q32.0 ADSR envelope generator, working around the absence of hardware floating point.",
     stack: ["C++", "ESP32", "Bluetooth A2DP", "fixed-point DSP"],
@@ -83,12 +93,6 @@ export interface OtherWork {
 }
 
 export const otherWork: OtherWork[] = [
-  {
-    title: "PromptTech AI Sandbox",
-    meta: "Capstone Project, Industry Client — 2025, graded A",
-    description:
-      "Dockerised full-stack app for comparing prompts and parameters across generative AI models. AWS Bedrock and Cognito (plus Google OAuth), deployed on EC2; REST API in Node.js/Express with a React front end.",
-  },
   {
     title: "ESP32-CAM Face Detection",
     meta: "Personal project",

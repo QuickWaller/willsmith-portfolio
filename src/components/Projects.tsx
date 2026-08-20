@@ -26,11 +26,13 @@ export default function Projects() {
                 ))}
               </ul>
               <div className="project-card__links">
-                {project.links.map((link) => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                    {link.label} ↗
-                  </a>
-                ))}
+                {project.links.length > 0
+                  ? project.links.map((link) => (
+                      <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                        {link.label} ↗
+                      </a>
+                    ))
+                  : project.note && <span className="project-card__note">{project.note}</span>}
               </div>
             </article>
           ))}

@@ -1,6 +1,7 @@
 .projects__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: start;
   gap: 1.5rem;
 }
 
@@ -45,6 +46,16 @@
 }
 
 .project-card__status--fork {
+  color: var(--wire);
+}
+
+.project-card__status--client {
+  color: var(--wire);
+}
+
+.project-card__note {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   color: var(--wire);
 }
 
@@ -96,7 +107,7 @@
 
 .other-work__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 

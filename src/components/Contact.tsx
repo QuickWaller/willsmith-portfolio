@@ -6,10 +6,10 @@ export default function Contact() {
     <footer className="section contact" id="contact" aria-labelledby="contact-title">
       <div className="container">
         <p className="eyebrow contact__eyebrow">
-          <span className="section-heading__dot" aria-hidden="true" />
+          <span className="contact__dot" aria-hidden="true" />
           Get in touch
         </p>
-        <h2 className="contact__title">
+        <h2 className="contact__title" id="contact-title">
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
         </h2>
 

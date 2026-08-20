@@ -15,7 +15,9 @@ export default function SectionHeading({
         <span className="section-heading__dot" aria-hidden="true" />
         {eyebrow}
       </p>
-      <h2 className="section-heading__title">{title}</h2>
+      <h2 className="section-heading__title" id={id && `${id}-title`}>
+        {title}
+      </h2>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 .experience__role {
   margin-bottom: 2.5rem;
-  max-width: 42rem;
 }
 
 .experience__role-head {
@@ -32,6 +31,7 @@
 
 .experience__blurb {
   margin-top: 1rem;
+  max-width: 42rem;
   line-height: 1.6;
   color: var(--ink);
 }

@@ -6,7 +6,7 @@ export default function Skills() {
   return (
     <section className="section skills" aria-labelledby="skills-title">
       <div className="container">
-        <SectionHeading eyebrow="Technical skills" title="Legend" id="skills" />
+        <SectionHeading eyebrow="Technical skills" title="Toolkit" id="skills" />
         <dl className="skills__grid">
           {skills.map((group) => (
             <div className="skills__group" key={group.group}>
