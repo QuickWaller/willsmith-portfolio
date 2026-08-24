@@ -79,10 +79,16 @@ Following a review pass with real screenshots:
 - **HTTPS enforcement** in the repo's Pages settings still needs switching on
   once GitHub's own Let's Encrypt certificate finishes issuing. HTTPS already
   works via Cloudflare's edge certificate in the meantime.
-- **The activity graphs undercount.** The `CONTRIB_READ_TOKEN` secrets are
-  scoped `read:user`; the lines-added/removed script needs `repo` or
-  Contents:Read to see private-repo activity, so it currently reports public
-  repos only.
+- **The lines-added/removed chart is built but switched off**
+  (`SHOW_CODE_CHANGES = false` in `Activity.tsx`). The script, component and
+  styling all work; it is disabled because the `CONTRIB_READ_TOKEN*` secrets
+  are scoped `read:user`, so `fetch-code-changes.mjs` 403/404s on private
+  repos and would silently report public repos only. Flip it on once those
+  tokens are widened to `repo` / Contents:Read.
+  **This does not affect the heatmap**, which is the only activity graph the
+  site actually renders: `fetch-contributions.mjs` queries each account as
+  `viewer` with that account's own token, and that *does* include private
+  contribution counts. The heatmap is complete.
 - **The `TOOLING` badge has not been visually verified** — typecheck, build and
   lint pass and the strings are confirmed present in the bundle, but no
   screenshot was taken.
