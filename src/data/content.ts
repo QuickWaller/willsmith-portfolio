@@ -17,7 +17,7 @@ export const experience = {
   ],
 } as const;
 
-export type ProjectStatus = "LIVE" | "FIRMWARE" | "FORK" | "CLIENT";
+export type ProjectStatus = "LIVE" | "FIRMWARE" | "FORK" | "CLIENT" | "TOOLING";
 
 export interface ProjectLink {
   label: string;
@@ -82,6 +82,19 @@ export const projects: Project[] = [
       {
         label: "fixed-point rework (WIP)",
         href: "https://github.com/QuickWaller/esp32-synth-fixed-point-wip",
+      },
+    ],
+  },
+  {
+    title: "Agent Tooling & Claude Code Harness",
+    status: "TOOLING",
+    description:
+      "A supervision harness for AI coding sessions that run unattended. When a session needs permission to act, the request races a local desktop popup against a Telegram bot and takes whichever answers first — so a decision can come from a phone instead of blocking until someone is back at the keyboard. Fail-closed by construction on every error path, never by timeout. Backed by a 72-assertion test suite that runs the real script as a subprocess against an isolated home directory, plus custom subagent definitions and a structured handoff workflow for dispatching parallel work.",
+    stack: ["PowerShell", "Telegram Bot API", "Claude Code hooks", "WinForms"],
+    links: [
+      {
+        label: "repo",
+        href: "https://github.com/QuickWaller/claude-code-managed-repo-template",
       },
     ],
   },

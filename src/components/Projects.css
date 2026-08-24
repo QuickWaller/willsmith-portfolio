@@ -53,6 +53,10 @@
   color: var(--wire);
 }
 
+.project-card__status--tooling {
+  color: var(--navy);
+}
+
 .project-card__note {
   font-family: var(--font-mono);
   font-size: 0.82rem;
