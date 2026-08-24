@@ -38,17 +38,17 @@ export const projects: Project[] = [
     title: "PromptTech AI Sandbox",
     status: "CLIENT",
     description:
-      "Capstone project for an industry client, graded A. Dockerised full-stack app for comparing prompts and parameters across generative AI models. AWS Bedrock and Cognito (plus Google OAuth), deployed on EC2; REST API in Node.js/Express with a React front end.",
-    stack: ["React", "Node.js", "Express", "AWS Bedrock", "AWS Cognito", "Docker"],
+      "Capstone project for an industry client, graded A. Dockerised full-stack app for comparing prompts and parameters across generative AI models — FastAPI/Python backend, React front end, PostgreSQL, Caddy reverse proxy, deployed on AWS EC2. I set up the project's architecture and containerisation, wrote the FastAPI service skeleton, the initial AWS Bedrock integration and the pytest harness, and built the deployment pipeline (Python/Paramiko — EC2 provisioning, image transfer over SFTP, remote Docker Compose) that the team shipped on for the rest of the project.",
+    stack: ["FastAPI", "Python", "React", "PostgreSQL", "AWS Bedrock", "AWS EC2", "Docker"],
     links: [],
     note: "Client work — no public repo",
   },
   {
-    title: "Multi-Tenant SaaS Infrastructure",
+    title: "Multi-Tenant AI Agent Platform",
     status: "CLIENT",
     description:
-      "Own and operate the infrastructure for a live, multi-tenant SaaS product at Novatec — an AI assistant that performs real actions and takes initiative (managing calendars, integrating with other software, and more, not just chatting) over Telegram/Slack and a self-serve web console. VM provisioning, secrets management, and identity/auth design, plus production operations: diagnosing and fixing live incidents and building the observability layer that keeps it running.",
-    stack: ["Docker", "Terraform", "Observability", "Identity/auth"],
+      "Designed and built end to end at Novatec: a live, multi-tenant platform hosting an AI assistant that performs real actions and takes initiative (managing calendars, integrating with other software, and more, not just chatting) over Telegram/Slack and a self-serve web console. Per-tenant isolation, VM provisioning, secrets management and identity/auth design, plus the production operations that keep it running — diagnosing and fixing live incidents, and building its observability layer.",
+    stack: ["Docker", "Terraform", "FastAPI", "React", "Observability", "Identity/auth"],
     links: [],
     note: "Employer work — Novatec Solutions",
   },
@@ -89,8 +89,8 @@ export const projects: Project[] = [
     title: "Vintage Story Game Server",
     status: "FORK",
     description:
-      "Enhanced fork adding automated mod management (40+ mods), Coolify deployment, and structured logging.",
-    stack: ["C#", "Docker", "Coolify"],
+      "A dedicated game server operated through natural language. Four custom Claude Code skills drive it: log monitoring (a cron job pre-filters errors server-side every minute; the skill reads and triages them over SSH), server management, playit.gg tunnel diagnostics, and repo maintenance — backed by a 600-line operations manual. Underneath sit real ops scripts (timestamped tar.gz save backups with failure cleanup, log rotation, a start guard) and push-to-deploy CI/CD through Coolify, which rebuilds the image and redeploys on every commit. Forked from quartzar/vintage-story-server; the agent tooling, ops automation and 40+ mod management are mine.",
+    stack: ["Claude Code skills", "Docker", "Coolify", "CI/CD", "Bash", "SSH"],
     links: [{ label: "repo", href: "https://github.com/QuickWaller/vintage-story-server" }],
   },
 ];
