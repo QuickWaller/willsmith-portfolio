@@ -64,6 +64,15 @@ export const projects: Project[] = [
     ],
   },
   {
+    title: "Home Lab Infrastructure",
+    status: "LIVE",
+    description:
+      "A self-built two-node Proxmox cluster (Corosync-quorate, live VM migration between nodes) running this site's backing services, a game server, and an ML pipeline. Zero open inbound ports — Cloudflare Tunnel for public ingress, Tailscale for admin access — plus a least-privilege Proxmox API role/ACL system: each automated AI agent gets its own restricted resource pool, service account, and scoped token, tested to allow only in-pool actions and reject everything outside it. Next: a small remote relay VM to route mail and game traffic past the home connection's CGNAT.",
+    stack: ["Proxmox VE", "Corosync", "Tailscale", "Cloudflare Tunnel", "SOPS/age", "API/ACL design"],
+    links: [],
+    note: "Personal infrastructure — private repo, no public link",
+  },
+  {
     title: "Hiking Data Logger / Weather Pod",
     status: "FIRMWARE",
     description:

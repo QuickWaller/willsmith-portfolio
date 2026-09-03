@@ -8,6 +8,18 @@ match the latest release here.
 
 ---
 
+## [1.2.0] — 2026-09-03
+
+### Added
+
+- **Home Lab Infrastructure** project card (`LIVE`): a self-built two-node
+  Proxmox cluster with live inter-node VM migration and a least-privilege
+  Proxmox API role/ACL system giving each automated AI agent its own
+  restricted resource pool, service account, and scoped token. Grid goes
+  7 → 8 cards, landing as a clean 2×4.
+
+---
+
 ## [1.1.0] — 2026-08-24
 
 ### Added
