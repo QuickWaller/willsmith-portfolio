@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dwarf Fortress — willsmith.nz</title>
+<meta name="description" content="An unattended Dwarf Fortress instance, running live.">
+<style>
+  :root {
+    --navy: #0f2540;
+    --fog: #eaede9;
+    --signal: #ff5a36;
+    --ink: #10181f;
+    --wire: #5a6d7c;
+    --panel: #ffffff;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --font-sans: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --navy: #dfe6ee;
+      --fog: #0b131c;
+      --signal: #ff7a52;
+      --ink: #e7ebee;
+      --wire: #7c93a5;
+      --panel: #101a24;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--fog);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(1.25rem, 4vw, 3rem);
+  }
+  header {
+    width: 100%;
+    max-width: 64rem;
+    margin-bottom: 1.25rem;
+  }
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    margin: 0 0 0.35rem;
+    color: var(--navy);
+  }
+  p.sub {
+    margin: 0;
+    color: var(--wire);
+    font-size: 0.95rem;
+  }
+  .frame {
+    width: 100%;
+    max-width: 64rem;
+    background: var(--panel);
+    border: 1px solid var(--wire);
+    border-radius: 6px;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #000;
+  }
+  .meta {
+    width: 100%;
+    max-width: 64rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--wire);
+  }
+  .meta .status { color: var(--signal); }
+  a { color: var(--signal); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Dwarf Fortress, running unattended</h1>
+  <p class="sub">A live screenshot from the fortress, refreshed every 15 seconds. Part of
+    <a href="https://github.com/QuickWaller/df-overseer" target="_blank" rel="noopener">df-overseer</a>.</p>
+</header>
+<div class="frame">
+  <img id="shot" src="" alt="Latest Dwarf Fortress screenshot" width="1280" height="800">
+</div>
+<div class="meta">
+  <span id="status" class="status">loading…</span>
+  <span id="updated"></span>
+</div>
+<script>
+  // Fill in once Cloudflare R2 is provisioned: the bucket's public base URL,
+  // e.g. "https://pub-XXXXXXXX.r2.dev". The pushed object is always named
+  // latest.png (scripts/install_df.py's cmd_stream on the df-automation
+  // side overwrites it in place every capture, no per-frame filenames).
+  const IMAGE_BASE = "";
+  const INTERVAL_MS = 15000;
+
+  const img = document.getElementById("shot");
+  const status = document.getElementById("status");
+  const updated = document.getElementById("updated");
+
+  function refresh() {
+    if (!IMAGE_BASE) {
+      status.textContent = "not wired up yet";
+      return;
+    }
+    const url = IMAGE_BASE.replace(/\/$/, "") + "/latest.png?t=" + Date.now();
+    const probe = new Image();
+    probe.onload = () => {
+      img.src = url;
+      status.textContent = "live";
+      updated.textContent = "updated " + new Date().toLocaleTimeString();
+    };
+    probe.onerror = () => {
+      status.textContent = "unreachable";
+    };
+    probe.src = url;
+  }
+
+  refresh();
+  setInterval(refresh, INTERVAL_MS);
+</script>
+</body>
+</html>
