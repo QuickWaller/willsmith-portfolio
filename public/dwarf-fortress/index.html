@@ -84,6 +84,23 @@
   }
   .meta .status { color: var(--signal); }
   a { color: var(--signal); }
+  .livelink {
+    width: 100%;
+    max-width: 64rem;
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    background: var(--panel);
+    border: 1px solid var(--wire);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .livelink a { font-weight: 600; }
+  .livelink .pending { color: var(--wire); }
 </style>
 </head>
 <body>
@@ -98,6 +115,11 @@
 <div class="meta">
   <span id="status" class="status">loading…</span>
   <span id="updated"></span>
+</div>
+<div class="livelink">
+  <a href="https://dwarf-fortress.willsmith.nz" target="_blank" rel="noopener">Watch live via noVNC &rarr;</a>
+  <span class="pending">not live yet — Cloudflare Tunnel is built and installed, waiting on a
+    dashboard connector token before this link actually connects</span>
 </div>
 <script>
   // Fill in once Cloudflare R2 is provisioned: the bucket's public base URL,
