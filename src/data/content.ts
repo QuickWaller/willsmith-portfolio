@@ -115,6 +115,17 @@ export const projects: Project[] = [
     stack: ["Claude Code skills", "Docker", "Coolify", "CI/CD", "Bash", "SSH"],
     links: [{ label: "repo", href: "https://github.com/QuickWaller/vintage-story-server" }],
   },
+  {
+    title: "Dwarf Fortress Autonomous Agent",
+    status: "LIVE",
+    description:
+      "A language model autonomously plays a real Dwarf Fortress colony through DFHack, with one hard rule: it is never shown a rendered map. Every spatial fact (connectivity, chokepoints, diggable ground) is computed in code and asserted to the model as structured text instead, since vision-language models read tile maps poorly but reason well over explicit claims. It runs inside a Proxmox VM confined to a pool-scoped API token, the reference instance of the least-privilege sandbox-pool design behind this site's Home Lab Infrastructure project. Verified end to end: a model's own decisions have produced a real building and a real dig, with no raw coordinate ever shown to the deciding process.",
+    stack: ["Python", "DFHack", "Lua", "Proxmox VE"],
+    links: [
+      { label: "watch live", href: "https://dwarf-fortress.willsmith.nz" },
+      { label: "repo", href: "https://github.com/QuickWaller/df-overseer" },
+    ],
+  },
 ];
 
 export interface OtherWork {
