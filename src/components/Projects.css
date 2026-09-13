@@ -4,6 +4,12 @@
   gap: 1.5rem;
 }
 
+/* An odd card count leaves the last card alone in a half-width cell;
+   span it across both columns so the last row doesn't look lopsided. */
+.projects__grid > .project-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .project-card {
   border: 1px solid color-mix(in srgb, var(--wire) 35%, transparent);
   border-radius: 6px;

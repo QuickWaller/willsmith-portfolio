@@ -8,6 +8,21 @@ match the latest release here.
 
 ---
 
+## [1.3.0] — 2026-09-14
+
+### Added
+
+- **Dwarf Fortress Autonomous Agent** project card (`LIVE`): a language model
+  plays a real Dwarf Fortress colony via DFHack and is never shown a rendered
+  map, running inside a pool-scoped Proxmox sandbox that is the reference
+  instance of the least-privilege design behind the Home Lab Infrastructure
+  card. Two independently-verified decision-to-mutation loops (a real build,
+  a real dig) with no raw coordinate ever exposed to the deciding process.
+  Grid goes 8 → 9; the last card now spans both columns so an odd count
+  doesn't leave a lopsided row.
+
+---
+
 ## [1.2.0] — 2026-09-03
 
 ### Added
