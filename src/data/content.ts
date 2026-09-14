@@ -38,7 +38,7 @@ export const projects: Project[] = [
     title: "PromptTech AI Sandbox",
     status: "CLIENT",
     description:
-      "Capstone project for an industry client, graded A. Dockerised full-stack app for comparing prompts and parameters across generative AI models: FastAPI/Python backend, React front end, PostgreSQL, Caddy reverse proxy, deployed on AWS EC2. I set up the project's architecture and containerisation, wrote the FastAPI service skeleton, the initial AWS Bedrock integration and the pytest harness, and built the deployment pipeline (Python/Paramiko: EC2 provisioning, image transfer over SFTP, remote Docker Compose) that the team shipped on for the rest of the project.",
+      "Capstone project for an industry client, graded A. Dockerised full-stack app for comparing prompts and parameters across generative AI models: FastAPI/Python backend, React front end, PostgreSQL, AWS Cognito auth, deployed on AWS EC2. I set up the project's architecture and containerisation, wrote the FastAPI service skeleton, the initial AWS Bedrock integration and the pytest harness, worked on the Cognito auth flow's dev/prod configuration, and built the deployment pipeline (Python/Paramiko: EC2 provisioning, image transfer over SFTP, remote Docker Compose) that the team shipped on for the rest of the project.",
     stack: ["FastAPI", "Python", "React", "PostgreSQL", "AWS Bedrock", "AWS EC2", "Docker"],
     links: [],
     note: "Client work — no public repo",
@@ -134,25 +134,18 @@ export interface OtherWork {
   description: string;
 }
 
-export const otherWork: OtherWork[] = [
-  {
-    title: "ESP32-CAM Face Detection",
-    meta: "Personal project",
-    description:
-      "Low-cost microcontroller streaming video over WebSocket to a FastAPI/YOLOv8 backend for real-time face detection, with backpressure-aware streaming (bounded queue, drop-oldest-frame) to handle network variability.",
-  },
-];
+export const otherWork: OtherWork[] = [];
 
 export const skills: { group: string; items: string[] }[] = [
   { group: "Languages", items: ["C", "C++", "C#", "Python", "Java", "TypeScript/JavaScript", "HTML/CSS"] },
   {
     group: "Frameworks",
-    items: ["React", "Node.js", "Express", "FastAPI", "Flask", ".NET", "Arduino/PlatformIO", "Godot", "Unity"],
+    items: ["React", "Node.js", "Express", "FastAPI", "Flask", "Arduino/PlatformIO", "Godot", "Unity"],
   },
   {
     group: "Cloud & infrastructure",
     items: [
-      "AWS (EC2, Cognito, Bedrock)",
+      "AWS (EC2, Bedrock)",
       "Docker",
       "Terraform",
       "Coolify",
@@ -165,14 +158,14 @@ export const skills: { group: string; items: string[] }[] = [
       "Networking (VLANs, DHCP, routing)",
     ],
   },
-  { group: "Data & APIs", items: ["PostgreSQL", "REST", "WebSockets", "OAuth", "Stripe"] },
+  { group: "Data & APIs", items: ["PostgreSQL", "REST", "WebSockets", "OAuth"] },
   {
     group: "Embedded",
-    items: ["ESP32/ESP32-CAM", "Fixed-point arithmetic", "Real-time audio DSP", "Low-power design", "Sensor integration"],
+    items: ["ESP32", "Fixed-point arithmetic", "Real-time audio DSP", "Low-power design", "Sensor integration"],
   },
   {
     group: "AI/ML",
-    items: ["Generative AI API integration", "Applied ML forecasting (LightGBM)", "Embedded computer vision"],
+    items: ["Generative AI API integration", "Applied ML forecasting (LightGBM)", "MCP servers and agent tooling"],
   },
 ];
 
