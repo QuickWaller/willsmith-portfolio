@@ -8,6 +8,36 @@ match the latest release here.
 
 ---
 
+## [1.4.0] — 2026-09-14
+
+### Removed
+
+- **ESP32-CAM Face Detection** dropped from Other Work (unlinkable private
+  repo, matching the same call already made on the CV). The section is now
+  empty, so its heading and grid were removed from `Projects.tsx` rather than
+  left rendering nothing; the now-dead `.other-work*` CSS rules were removed
+  too.
+- **`.NET`** and **Stripe** dropped from Technical Skills: no real `.NET`
+  work was ever found beyond an abandoned template, and Will wrote 0 of 200
+  lines of the capstone's Stripe module.
+
+### Changed
+
+- **Cloud & infrastructure**: `AWS (EC2, Cognito, Bedrock)` → `AWS (EC2,
+  Bedrock)`. Cognito stays as project-specific context on the PromptTech card
+  rather than a general skill claim.
+- **Embedded**: `ESP32/ESP32-CAM` → `ESP32` (the ESP32 FM Synthesiser card
+  still uses it; the CAM half went with the Other Work entry above).
+- **AI/ML**: `Embedded computer vision` → `MCP servers and agent tooling`,
+  re-sourced now that ESP32-CAM (its only basis) is gone, matching the CV's
+  current AI/ML line.
+- **PromptTech AI Sandbox card**: `Caddy reverse proxy` → `AWS Cognito auth`,
+  and added "worked on the Cognito auth flow's dev/prod configuration",
+  matching the CV's current capstone bullet.
+- CV download refreshed to the 2026-09-03 build (CV `v4.0`).
+
+---
+
 ## [1.3.0] — 2026-09-14
 
 ### Added

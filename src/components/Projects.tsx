@@ -1,5 +1,5 @@
 import SectionHeading from "./SectionHeading";
-import { projects, otherWork } from "../data/content";
+import { projects } from "../data/content";
 import "./Projects.css";
 
 export default function Projects() {
@@ -36,19 +36,6 @@ export default function Projects() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="other-work">
-          <p className="tag other-work__tag">Also built, no public repo</p>
-          <div className="other-work__grid">
-            {otherWork.map((item) => (
-              <div className="other-work__item" key={item.title}>
-                <p className="other-work__title">{item.title}</p>
-                <p className="other-work__meta">{item.meta}</p>
-                <p className="other-work__desc">{item.description}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

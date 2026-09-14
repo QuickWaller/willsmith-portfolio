@@ -106,43 +106,8 @@
   border-bottom-color: var(--signal);
 }
 
-.other-work {
-  margin-top: 3.5rem;
-}
-
-.other-work__tag {
-  margin-bottom: 1.25rem;
-  display: inline-block;
-}
-
-.other-work__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.other-work__title {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  color: var(--navy);
-}
-
-.other-work__meta {
-  font-size: 0.78rem;
-  color: var(--wire);
-  margin-top: 0.2rem;
-}
-
-.other-work__desc {
-  margin-top: 0.6rem;
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--ink);
-}
-
 @media (max-width: 760px) {
-  .projects__grid,
-  .other-work__grid {
+  .projects__grid {
     grid-template-columns: 1fr;
   }
 }
