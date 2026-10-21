@@ -3,7 +3,7 @@ import "./Nav.css";
 const LINKS = [
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
+  { href: "#education", label: "Education" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -12,7 +12,7 @@ export default function Nav() {
     <header className="nav">
       <div className="nav__inner container">
         <a className="nav__mark" href="#top" aria-label="Will Smith, home">
-          WS
+          <img src="/avatar-mark.png" alt="" width={44} height={44} />
         </a>
         <nav className="nav__links" aria-label="Section">
           {LINKS.map((link) => (

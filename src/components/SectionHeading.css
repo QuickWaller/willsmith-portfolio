@@ -1,5 +1,4 @@
 .section-heading {
-  scroll-margin-top: var(--nav-h);
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 

@@ -1,15 +1,7 @@
 .hero {
-  min-height: calc(100dvh - var(--nav-h));
   margin-top: var(--nav-h);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding-block: clamp(3rem, 9vh, 6rem);
   position: relative;
-}
-
-.hero__inner {
-  padding-top: clamp(1.25rem, 4vh, 2.25rem);
-  max-width: 46rem;
 }
 
 .hero__eyebrow {
@@ -24,10 +16,14 @@
 
 .hero__lede {
   margin-top: 1.25rem;
-  max-width: 36rem;
+  max-width: 48rem;
   font-size: clamp(0.95rem, 1.3vw, 1.1rem);
   line-height: 1.55;
   color: var(--wire);
+}
+
+.hero__lede + .hero__lede {
+  margin-top: 0.75rem;
 }
 
 .hero__cta {

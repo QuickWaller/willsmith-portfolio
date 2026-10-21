@@ -42,9 +42,18 @@
   gap: clamp(2rem, 4vw, 3.5rem);
 }
 
-.experience__col-tag {
+.experience__group-title {
   margin-bottom: 1rem;
-  display: inline-block;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--navy);
+}
+
+.experience__label {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--navy);
 }
 
 .experience__col ul {

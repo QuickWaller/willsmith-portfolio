@@ -14,9 +14,6 @@ export default function Contact() {
         </h2>
 
         <div className="contact__row">
-          <a className="btn btn--primary" href={contact.cv} target="_blank" rel="noreferrer">
-            Download CV
-          </a>
           <a className="contact__link" href={contact.github} target="_blank" rel="noreferrer">
             {contact.githubLabel}
           </a>

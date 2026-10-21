@@ -2,6 +2,22 @@ import SectionHeading from "./SectionHeading";
 import { experience } from "../data/content";
 import "./Experience.css";
 
+type Group = (typeof experience.groups)[number];
+
+function GroupTitle({ group }: { group: Group }) {
+  if (!("link" in group) || !group.link) return <>{group.title}</>;
+  const [before, after] = group.title.split(group.link.text);
+  return (
+    <>
+      {before}
+      <a href={group.link.href} target="_blank" rel="noreferrer">
+        {group.link.text}
+      </a>
+      {after}
+    </>
+  );
+}
+
 export default function Experience() {
   return (
     <section className="section experience" aria-labelledby="experience-title">
@@ -18,22 +34,20 @@ export default function Experience() {
         </div>
 
         <div className="experience__grid">
-          <div className="experience__col">
-            <p className="tag experience__col-tag">Software</p>
-            <ul>
-              {experience.software.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="experience__col">
-            <p className="tag experience__col-tag">Infrastructure &amp; hosting</p>
-            <ul>
-              {experience.infra.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
+          {experience.groups.map((group) => (
+            <div className="experience__col" key={group.title}>
+              <p className="experience__group-title">
+                <GroupTitle group={group} />
+              </p>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item.label}>
+                    <span className="experience__label">{item.label}:</span> {item.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>

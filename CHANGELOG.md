@@ -8,6 +8,48 @@ match the latest release here.
 
 ---
 
+## [1.5.0] — 2026-10-21
+
+Content synced with the v5 CV draft and cut down hard.
+
+### Removed
+
+- **Multi-Tenant AI Agent Platform** and **Recipe Web App** project cards.
+- **Technical Skills ("Toolkit")** section, its nav link, `Skills.tsx`/`.css`
+  and the `skills` data. Also the dead `otherWork` export left over from 1.4.0.
+- Course grades from Education; it now lists the two majors, as the CV does.
+- **Downloadable CV**, for now: both "Download CV" buttons (hero and
+  contact), the `contact.cv` field and `public/Will-Smith-CV.pdf`. The v5.1
+  build still carried a Summary line Will has since dropped.
+
+### Changed
+
+- Role is now **Technical Consultant**; "contractor" and "full-time" removed.
+- Contact email is now `willsmithnz365@gmail.com`.
+- Hero lede replaced with the CV summary, minus its closing line about the
+  kind of role being sought.
+- Work Experience now uses Will's CV v5.1 Novatec entry verbatim: four
+  outcome groups with labelled bullets in a 2×2 grid, replacing the old
+  Software / Infrastructure columns. The PromptTech, ESP32 FM Synthesiser and
+  Claude Code Harness cards also take their CV wording verbatim; the other
+  cards are shortened to two or three sentences with a smaller stack list.
+  "Agent
+  Tooling & Claude Code Harness" renamed **Claude Code Harness & Repository
+  Template** to match the CV.
+- Project cards drop their `min-height: 290px`, which left large gaps under
+  the now-shorter descriptions.
+- Hero no longer forces a full viewport height, and its text runs wider
+  (lede `max-width` 36rem → 48rem), so the headline fits on one line.
+- Nav mark: the "WS" monogram is replaced by a crop of the GitHub avatar
+  (`public/avatar-mark.png`, 96px for 2× screens).
+- Nav gains an **Education** link.
+
+### Fixed
+
+- Anchor jumps landed a full nav-height too low: `html` `scroll-padding-top`
+  and `.section-heading` `scroll-margin-top` were both applied. The heading
+  rule is gone; the root padding is now `nav-h + 1.5rem`.
+
 ## [1.4.0] — 2026-09-14
 
 ### Removed
